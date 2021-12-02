@@ -35,11 +35,9 @@ spec:
       name: k8s-dev
     config:
       machineType: n1-standard-1
-      sandboxConfig:
-        type: gvisor
       diskSizeGb: 80
       diskType: pd-ssd
-      imageType: cos_containerd
+      imageType: ubuntu_containerd
       labels:
         env: dev
       oauthScopes:

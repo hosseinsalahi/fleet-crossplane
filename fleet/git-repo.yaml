@@ -1,0 +1,12 @@
+---
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: crossplane
+  namespace: fleet-local
+spec:
+  repo: https://github.com/encodeflush/fleet-crossplane
+  branch: main
+  paths:
+  - crossplane/providers/gcp/container
+  - crossplane/providers/aws/container

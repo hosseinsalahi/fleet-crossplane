@@ -2,16 +2,19 @@
 apiVersion: eks.aws.crossplane.io/v1beta1
 kind: Cluster
 metadata:
-  name: sample-cluster
+  name: dev-cluster
   labels:
-    example: "true"
+    env: "dev"
 spec:
   forProvider:
     region: eu-central-1
-    # Defined in examples/iam
+    roleArnRef:
+      name: eksrole
     resourcesVpcConfig:
       endpointPrivateAccess: true
       endpointPublicAccess: true
+      subnetIds:
+        - ""
     version: "1.21"
   writeConnectionSecretToRef:
     name: cluster-conn
@@ -22,14 +25,18 @@ spec:
 apiVersion: eks.aws.crossplane.io/v1alpha1
 kind: NodeGroup
 metadata:
-  name: my-group
+  name: eks-node-group
   labels:
-    example: "true"
+    env: "dev"
 spec:
   forProvider:
     region: eu-central-1
     clusterNameRef:
-      name: sample-cluster
+      name: dev-cluster
+    nodeRoleRef:
+      name: eksnoderole  
+    subnets:
+      - ""
     scalingConfig:
       desiredSize: 1
       maxSize: 1
@@ -40,15 +47,15 @@ spec:
 apiVersion: eks.aws.crossplane.io/v1alpha1
 kind: Addon
 metadata:
-  name: sample-addon
+  name: eks-addon
   labels:
-    example: "true"
+    env: "dev"
 spec:
   forProvider:
     region: eu-central-1
     addonName: coredns
     addonVersion: "v1.8.4-eksbuild.1"
     clusterNameRef:
-      name: sample-cluster
+      name: dev-cluster
   providerConfigRef:
     name: aws-conf

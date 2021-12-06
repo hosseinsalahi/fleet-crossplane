@@ -1,0 +1,99 @@
+---
+apiVersion: identity.aws.crossplane.io/v1beta1
+kind: IAMRolePolicyAttachment
+metadata:
+  name: eks-rolepolicyattachment
+spec:
+  forProvider:
+    policyArnRef:
+      name: ekspolicy
+    roleNameRef:
+      name: eksrole
+  providerConfigRef:
+    name: aws-conf
+---
+apiVersion: identity.aws.crossplane.io/v1beta1
+kind: IAMRolePolicyAttachment
+metadata:
+  name: eks-s3-replication-policy
+spec:
+  forProvider:
+    policyArn: arn:aws:iam::aws:policy/AmazonS3FullAccess
+    roleNameRef:
+      name: eksrole
+  providerConfigRef:
+    name: aws-conf
+
+---
+apiVersion: identity.aws.crossplane.io/v1beta1
+kind: IAMRolePolicyAttachment
+metadata:
+  name: eks-rolemanagedpolicyattachment
+spec:
+  forProvider:
+    policyArn: arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
+    roleNameRef:
+      name: eksrole
+  providerConfigRef:
+    name: aws-conf
+
+---
+apiVersion: identity.aws.crossplane.io/v1beta1
+kind: IAMRolePolicyAttachment
+metadata:
+  name: eks-noderolemanagedpolicyattachment1
+spec:
+  forProvider:
+    policyArn: arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
+    roleNameRef:
+      name: eksnoderole
+  providerConfigRef:
+    name: aws-conf
+---
+apiVersion: identity.aws.crossplane.io/v1beta1
+kind: IAMRolePolicyAttachment
+metadata:
+  name: eks-noderolemanagedpolicyattachment2
+spec:
+  forProvider:
+    policyArn: arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly
+    roleNameRef:
+      name: eksnoderole
+  providerConfigRef:
+    name: aws-conf
+---
+apiVersion: identity.aws.crossplane.io/v1beta1
+kind: IAMRolePolicyAttachment
+metadata:
+  name: eks-noderolemanagedpolicyattachment3
+spec:
+  forProvider:
+    policyArn: arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+    roleNameRef:
+      name: eksnoderole
+  providerConfigRef:
+    name: aws-conf
+---
+---
+apiVersion: identity.aws.crossplane.io/v1alpha1
+kind: IAMPolicy
+metadata:
+  name: ekspolicy  
+spec:
+  forProvider:
+    name: external-name
+    document: |
+      {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+              "Sid": "VisualEditor0",
+              "Effect": "Allow",
+              "Action": "elastic-inference:Connect",
+              "Resource": "*"
+          }
+        ]
+      }
+  providerConfigRef:
+    name: aws-conf
+---

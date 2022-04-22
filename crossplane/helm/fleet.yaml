@@ -1,0 +1,16 @@
+# This file and all contents in it are OPTIONAL.
+#
+# Refer to ../helm/fleet.yaml and ../kustomize/fleet.yaml for the full reference
+# of what can be included here.  All Helm and Kustomize options apply
+
+defaultNamespace: crossplane-system
+helm:
+  releaseName: crossplane
+  repo: "https://charts.crossplane.io/stable" 
+  chart: "crossplane"
+  version: "1.7.0"
+  values:
+    provider:
+      packages: 
+        - crossplane/provider-aws:v0.26.1
+        - crossplane/provider-gcp:v0.21.0

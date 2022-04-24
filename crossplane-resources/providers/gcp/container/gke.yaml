@@ -2,6 +2,7 @@ apiVersion: container.gcp.crossplane.io/v1beta2
 kind: Cluster
 metadata:
   name: crossplane-demo
+  namespace: gcp-resources
 spec:
   forProvider:
     initialClusterVersion: "1.22.8-gke.200"
@@ -26,6 +27,7 @@ apiVersion: container.gcp.crossplane.io/v1beta1
 kind: NodePool
 metadata:
   name: crossplane-np
+  namespace: gcp-resources
 spec:
   providerConfigRef:
     name: gcp-conf

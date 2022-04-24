@@ -1,10 +1,10 @@
 apiVersion: container.gcp.crossplane.io/v1beta2
 kind: Cluster
 metadata:
-  name: k8s-dev
+  name: crossplane-demo
 spec:
   forProvider:
-    initialClusterVersion: "1.21.5-gke.1302"
+    initialClusterVersion: "1.22.8-gke.200"
     location: europe-west1
     #serviceAccount: sa-test
     networkConfig:
@@ -16,6 +16,8 @@ spec:
       gcePersistentDiskCsiDriverConfig:
         enabled: true
     network: "default"
+  providerConfigRef:
+    name: gcp-conf
   writeConnectionSecretToRef:
     namespace: crossplane-system
     name: gke-conn
@@ -25,6 +27,8 @@ kind: NodePool
 metadata:
   name: crossplane-np
 spec:
+  providerConfigRef:
+    name: gcp-conf
   forProvider:
     autoscaling:
       autoprovisioned: false
@@ -32,7 +36,7 @@ spec:
       maxNodeCount: 5
       minNodeCount: 3  
     clusterRef:
-      name: k8s-dev
+      name: crossplane-demo
     config:
       machineType: n1-standard-1
       diskSizeGb: 80

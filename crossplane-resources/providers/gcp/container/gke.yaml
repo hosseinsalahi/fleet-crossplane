@@ -35,8 +35,8 @@ spec:
     autoscaling:
       autoprovisioned: true
       enabled: true
-      maxNodeCount: 5
-      minNodeCount: 3  
+      maxNodeCount: 1
+      minNodeCount: 1  
     clusterRef:
       name: crossplane-demo
     config:

@@ -1,0 +1,16 @@
+apiVersion: database.gcp.crossplane.io/v1beta1
+kind: CloudSQLInstance
+metadata:
+  name: demo-cloudsql-instance
+spec:
+  forProvider:
+    databaseVersion: POSTGRES_12
+    region: eu-west1
+    settings:
+      tier: db-custom-1-3840
+      dataDiskSizeGb: 20
+  providerConfigRef:
+    name: gcp-conf
+  writeConnectionSecretToRef:
+    name: demo-cloudsql-connection-details
+    democe: crossplane-system

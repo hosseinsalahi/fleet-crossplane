@@ -1,0 +1,16 @@
+---
+apiVersion: iam.gcp.crossplane.io/v1alpha1
+kind: ServiceAccountKey
+metadata:
+  name: demo-sakey
+spec:
+  forProvider:
+    serviceAccount: projects/sacred-armor-344411/serviceAccounts/demo-sa@sacred-armor-344411.iam.gserviceaccount.com
+    serviceAccountRef:
+      name: demo-sa
+  deletionPolicy: Delete
+  providerConfigRef:
+    name: gcp-conf
+  writeConnectionSecretToRef:
+    name: demo-sakey
+    namespace: default

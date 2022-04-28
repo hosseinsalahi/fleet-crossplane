@@ -1,0 +1,16 @@
+---
+apiVersion: iam.gcp.crossplane.io/v1alpha1
+kind: ServiceAccountPolicy
+metadata:
+  name: demo-sa-policy
+spec:
+  forProvider:
+    serviceAccountRef:
+      name: demo-sa
+    policy:
+      bindings:
+        - role: roles/iam.workloadIdentityUser
+          members:
+            - serviceAccount:sacred-armor-344411.svc.id.goog[K8S_NAMESPACE/KSA_NAME]
+  providerConfigRef:
+    name: gcp-conf

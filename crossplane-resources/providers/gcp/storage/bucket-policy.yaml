@@ -1,0 +1,22 @@
+apiVersion: storage.gcp.crossplane.io/v1alpha1
+kind: BucketPolicy
+metadata:
+  name: crossplane-demo-bucket-policy
+spec:
+  forProvider:
+    bucketRef:
+      name: demo
+    policy:
+      bindings:
+        - role: roles/storage.legacyBucketOwner
+          members:
+            - "projectEditor:sacred-armor-344411"
+            - "projectOwner:sacred-armor-344411"
+        - role: roles/storage.legacyBucketReader
+          members:
+            - "projectViewer:sacred-armor-344411"
+        - role: roles/storage.objectAdmin
+          serviceAccountMemberRefs:
+            - name: demo-sa
+  providerConfigRef:
+    name: gcp-conf

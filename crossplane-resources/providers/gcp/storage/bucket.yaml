@@ -1,0 +1,15 @@
+---
+apiVersion: storage.gcp.crossplane.io/v1alpha3
+kind: Bucket
+metadata:
+  name: demo
+  labels:
+    demo: "true"
+  annotations:
+    crossplane.io/external-name: crossplane-demo-bucket
+spec:
+  location: EU
+  storageClass: MULTI_REGIONAL
+  providerConfigRef:
+    name: gcp-conf
+  deletionPolicy: Delete

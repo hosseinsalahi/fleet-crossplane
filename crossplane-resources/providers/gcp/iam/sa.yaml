@@ -1,0 +1,12 @@
+---
+apiVersion: iam.gcp.crossplane.io/v1alpha1
+kind: ServiceAccount
+metadata:
+  name: demo-sa
+spec:
+  forProvider:
+    displayName: "a demo service account"
+    description: "demo"
+  deletionPolicy: Delete
+  providerConfigRef:
+    name: gcp-conf

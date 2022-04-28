@@ -8,4 +8,4 @@ spec:
   repo: https://github.com/encodeflush/fleet-crossplane.git
   branch: main
   paths:
-  - crossplane-resources/providers/gcp/container
+  - crossplane-resources/providers/gcp/gke

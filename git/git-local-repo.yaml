@@ -1,0 +1,11 @@
+---
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: gcp-resources
+  namespace: fleet-local
+spec:
+  repo: https://github.com/encodeflush/fleet-crossplane.git
+  branch: main
+  paths:
+  - crossplane-resources/providers/gcp/central-gke.yaml

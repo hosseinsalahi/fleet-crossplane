@@ -5,7 +5,7 @@ metadata:
 spec:
   forProvider:
     databaseVersion: POSTGRES_12
-    region: eu-west3
+    region: europe-west3
     settings:
       tier: db-custom-1-3840
       dataDiskSizeGb: 60

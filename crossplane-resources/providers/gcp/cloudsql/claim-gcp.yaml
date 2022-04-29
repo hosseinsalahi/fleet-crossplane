@@ -13,4 +13,4 @@ spec:
     name: gcp-conf
   writeConnectionSecretToRef:
     name: db-conn
-    democe: crossplane-system
+    namespace: default

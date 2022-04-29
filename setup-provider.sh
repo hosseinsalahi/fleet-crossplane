@@ -1,3 +1,3 @@
 #!/bin/bash
 
-kubectl create -f ~/.config/gcloud/secret-gcp.yaml
+kubectl apply -f ~/.config/gcloud/secret-gcp.yaml

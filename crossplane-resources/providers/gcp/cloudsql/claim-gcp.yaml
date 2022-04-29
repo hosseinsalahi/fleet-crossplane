@@ -5,12 +5,12 @@ metadata:
 spec:
   forProvider:
     databaseVersion: POSTGRES_12
-    region: eu-west1
+    region: eu-west3
     settings:
       tier: db-custom-1-3840
-      dataDiskSizeGb: 20
+      dataDiskSizeGb: 60
   providerConfigRef:
     name: gcp-conf
   writeConnectionSecretToRef:
-    name: demo-cloudsql-connection-details
+    name: db-conn
     democe: crossplane-system

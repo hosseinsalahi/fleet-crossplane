@@ -8,5 +8,5 @@ spec:
   repo: https://github.com/encodeflush/fleet-crossplane.git
   branch: main
   paths:
-  - crossplane-resources/providers/gcp/gke
-  #- crossplane-resources/providers/gcp/cloudsql
+    - crossplane-resources/providers/gcp/gke
+    #- crossplane-resources/providers/gcp/cloudsql

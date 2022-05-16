@@ -10,4 +10,4 @@ spec:
   paths:
     - crossplane-resources/providers/gcp/gke
     - crossplane-resources/providers/gcp/cloudsql
-    - crossplane-resources/providers/gcp/storage
+    #- crossplane-resources/providers/gcp/storage
